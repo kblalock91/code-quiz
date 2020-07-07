@@ -21,12 +21,12 @@ var quizQuestions = [{
         correctAnswer: "c"
     }
 ];
+var currentQuestionIndex = 0;
 
 startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
-    var currentQuestion = quizQuestions[0];
-    displayQuestion(currentQuestion);
+    displayQuestion(quizQuestions[currentQuestionIndex]);
 }
 
 function displayQuestion(quizQuestion) {
@@ -50,5 +50,9 @@ function handleButtonClick(answer, correctAnswer) {
         // Update page with Wrong! and decrease decrement on the clock
         resultsContent.textContent = "Wrong Answer";
     }
+    // display next question
+    currentQuestionIndex++
+    quizContent.innerHTML = "";
+    displayQuestion(quizQuestions[currentQuestionIndex])
 
 }
